@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="VeDock là ứng dụng Windows dành cho developer làm việc với Cloudflare D1, R2 và Workers logs. Đang hoàn thiện, chưa phát hành.">
+  <meta name="color-scheme" content="light">
+  <title>VeDock — Không gian làm việc với Cloudflare trên Windows</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#noi-dung">Đến nội dung chính</a>
+  <header class="site-header wrap">
+    <a class="wordmark" href="#dau-trang" aria-label="VeDock — đầu trang">VeDock</a>
+    <nav aria-label="Điều hướng chính">
+      <a href="#tinh-nang">Tính năng</a>
+      <a href="#cach-lam-viec">Cách làm việc</a>
+      <a href="#trang-thai">Trạng thái</a>
+    </nav>
+  </header>
+  <main id="noi-dung">
+    <section class="intro wrap" id="dau-trang" aria-labelledby="intro-title">
+      <div class="intro-copy">
+        <p class="eyebrow">Ứng dụng Windows · Dành cho developer</p>
+        <h1 id="intro-title">D1, R2 và Workers logs.<br> <span>Cùng một nơi làm việc.</span></h1>
+        <p class="lead">VeDock đưa dữ liệu, tệp và log của các tài khoản Cloudflare vào một không gian làm việc trên máy tính. Xem trước thay đổi, nhận biết đúng tài khoản và tiếp tục công việc khi bị gián đoạn.</p>
+        <a class="button" href="#tinh-nang">Khám phá tính năng <span aria-hidden="true">↗</span></a>
+        <p class="release-note"><span class="status-dot" aria-hidden="true"></span>Đang hoàn thiện, chưa phát hành</p>
+      </div>
+      <aside class="overview" aria-labelledby="overview-title">
+        <div class="overview-heading"><span id="overview-title">Trong không gian làm việc</span><span class="local-label">Windows</span></div>
+        <div class="module"><span class="module-name">D1</span><div><strong>Từ dữ liệu đến thay đổi</strong><p>Duyệt bảng, chạy SQL và xem lại các chỉnh sửa trước khi Commit.</p></div></div>
+        <div class="module"><span class="module-name">R2</span><div><strong>Tệp và tác vụ, có đối chiếu</strong><p>Duyệt object, tải lên, tải xuống và theo dõi các tác vụ xóa.</p></div></div>
+        <div class="module"><span class="module-name">Logs</span><div><strong>Theo dòng sự kiện</strong><p>Xem log trực tiếp hoặc truy vấn lịch sử theo Worker.</p></div></div>
+        <p class="overview-foot">Đăng nhập bằng Cloudflare OAuth</p>
+      </aside>
+    </section>
+    <section class="features wrap" id="tinh-nang" aria-labelledby="features-title">
+      <div class="section-heading"><p class="eyebrow">Những việc hằng ngày</p><h2 id="features-title">Từ xem dữ liệu<br> đến xử lý công việc.</h2><p>Các tính năng đang được hoàn thiện trong VeDock.</p></div>
+      <div class="feature-grid">
+        <article><p class="feature-label">Cơ sở dữ liệu / D1</p><h3>Sửa dữ liệu<br> có bước xem lại.</h3><p>Duyệt bảng và view, tìm trong trang đã tải, chạy câu lệnh SQL và xuất CSV. Các chỉnh sửa trên bảng được tập hợp để xem lại trước khi ghi.</p><ul><li>Đối chiếu giá trị cũ để nhận biết xung đột</li><li>Dừng khi kết quả ghi chưa xác định</li><li>Lịch sử truy vấn lưu tại máy</li></ul></article>
+        <article><p class="feature-label">Lưu trữ object / R2</p><h3>Làm việc với tệp,<br> biết rõ tác vụ.</h3><p>Duyệt theo thư mục, xem metadata, tải xuống và tải lên tệp. Khi trùng tên, bạn chọn cách xử lý trước khi ghi đè.</p><ul><li>Tiến độ và trạng thái tác vụ trong Jobs</li><li>Kiểm tra lock và Data Catalog trước khi xóa</li><li>Xác nhận phạm vi và số object cần xóa</li></ul></article>
+        <article><p class="feature-label">Quan sát / Workers logs</p><h3>Tìm sự kiện.<br> Theo dõi ngữ cảnh.</h3><p>Mở Live logs cho một Worker, áp dụng bộ lọc hoặc tạm dừng hiển thị. Với History, chọn khoảng thời gian và tìm các sự kiện liên quan.</p><ul><li>Lọc theo phương thức, kết quả và nội dung</li><li>Mở rộng console log và exception</li><li>Mang giá trị đã chọn sang tìm kiếm trong D1</li></ul></article>
+      </div>
+    </section>
+    <section class="principles" id="cach-lam-viec" aria-labelledby="principles-title">
+      <div class="wrap principles-inner">
+        <div><p class="eyebrow">Cách VeDock làm việc</p><h2 id="principles-title">Bạn giữ quyền<br> kiểm soát.</h2></div>
+        <div class="principle-list">
+          <article><h3>Đăng nhập qua Cloudflare</h3><p>Ứng dụng sử dụng OAuth. Bạn chọn các mô-đun và mức quyền cần dùng, thay vì dán API token vào VeDock.</p></article>
+          <article><h3>Rõ tài khoản, rõ thao tác</h3><p>Không gian làm việc gắn với từng tài khoản. Các thao tác thay đổi dữ liệu có bước xem lại hoặc xác nhận phù hợp; kết quả không xác định cần được đối chiếu trước khi thử lại.</p></article>
+          <article><h3>Dữ liệu ứng dụng lưu tại máy</h3><p>Thông tin đăng nhập, bộ nhớ đệm và nhật ký tác vụ được lưu cục bộ. VeDock kết nối trực tiếp tới API Cloudflare, không qua máy chủ trung gian của VeDock.</p></article>
+        </div>
+      </div>
+    </section>
+    <section class="status wrap" id="trang-thai" aria-labelledby="status-title">
+      <p class="eyebrow">Trạng thái dự án</p>
+      <h2 id="status-title">Đang hoàn thiện,<br> chưa phát hành.</h2>
+      <p>VeDock đang được kiểm thử và hoàn thiện trải nghiệm sử dụng. Trang này giới thiệu sản phẩm đang phát triển; hiện chưa có bản tải xuống công khai.</p>
+      <a class="text-link" href="#dau-trang">Về đầu trang <span aria-hidden="true">↑</span></a>
+    </section>
+  </main>
+  <footer class="site-footer wrap">
+    <p class="footer-name">VeDock</p>
+    <p>VeDock là ứng dụng độc lập của bên thứ ba, không liên kết, được bảo trợ hay chứng thực bởi Cloudflare, Inc. Cloudflare® là nhãn hiệu đã đăng ký của Cloudflare, Inc. Bạn cần tài khoản Cloudflare của riêng mình để sử dụng VeDock.</p>
+  </footer>
+</body>
+</html>

@@ -13,7 +13,7 @@ The application source code is not published here.
 
 ## Status
 
-Specification locked; implementation has not started yet. Watch this repository for the first release notes.
+The Windows application is being implemented and tested. It has not been publicly released; no public download is available yet. The static product introduction lives in `site/`.
 
 ## Trademark notice
 
