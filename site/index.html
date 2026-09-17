@@ -1,68 +1,70 @@
 <!doctype html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="VeDock là ứng dụng Windows dành cho developer làm việc với Cloudflare D1, R2 và Workers logs. Đang hoàn thiện, chưa phát hành.">
+  <meta name="description" content="VeDock brings Cloudflare D1, R2, and Workers logs into one Windows desktop workspace. In development. Not yet released.">
   <meta name="color-scheme" content="light">
-  <title>VeDock — Không gian làm việc với Cloudflare trên Windows</title>
+  <title>VeDock — Cloudflare. At your fingertips.</title>
+  <link rel="preload" href="fonts/Geist-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
+  <script type="module" src="app.js"></script>
 </head>
 <body>
-  <a class="skip-link" href="#noi-dung">Đến nội dung chính</a>
-  <header class="site-header wrap">
-    <a class="wordmark" href="#dau-trang" aria-label="VeDock — đầu trang">VeDock</a>
-    <nav aria-label="Điều hướng chính">
-      <a href="#tinh-nang">Tính năng</a>
-      <a href="#cach-lam-viec">Cách làm việc</a>
-      <a href="#trang-thai">Trạng thái</a>
-    </nav>
+  <a class="skip-link" href="#noi-dung">Skip to main content</a>
+  <header class="header wrap" id="dau-trang">
+    <a href="#dau-trang" class="wordmark" aria-label="VeDock — back to top">VeDock<span class="wordmark-dot" aria-hidden="true">_</span></a>
+    <nav aria-label="Main navigation"><a href="#trai-nghiem">Experience</a><a href="#tinh-nang">Features</a><a href="#cach-lam-viec">How it works</a></nav>
+    <a href="mailto:support@vedock.com" class="nav-contact">Get in touch <span aria-hidden="true">↗</span></a>
   </header>
   <main id="noi-dung">
-    <section class="intro wrap" id="dau-trang" aria-labelledby="intro-title">
-      <div class="intro-copy">
-        <p class="eyebrow">Ứng dụng Windows · Dành cho developer</p>
-        <h1 id="intro-title">D1, R2 và Workers logs.<br> <span>Cùng một nơi làm việc.</span></h1>
-        <p class="lead">VeDock đưa dữ liệu, tệp và log của các tài khoản Cloudflare vào một không gian làm việc trên máy tính. Xem trước thay đổi, nhận biết đúng tài khoản và tiếp tục công việc khi bị gián đoạn.</p>
-        <a class="button" href="#tinh-nang">Khám phá tính năng <span aria-hidden="true">↗</span></a>
-        <p class="release-note"><span class="status-dot" aria-hidden="true"></span>Đang hoàn thiện, chưa phát hành</p>
-      </div>
-      <aside class="overview" aria-labelledby="overview-title">
-        <div class="overview-heading"><span id="overview-title">Trong không gian làm việc</span><span class="local-label">Windows</span></div>
-        <div class="module"><span class="module-name">D1</span><div><strong>Từ dữ liệu đến thay đổi</strong><p>Duyệt bảng, chạy SQL và xem lại các chỉnh sửa trước khi Commit.</p></div></div>
-        <div class="module"><span class="module-name">R2</span><div><strong>Tệp và tác vụ, có đối chiếu</strong><p>Duyệt object, tải lên, tải xuống và theo dõi các tác vụ xóa.</p></div></div>
-        <div class="module"><span class="module-name">Logs</span><div><strong>Theo dòng sự kiện</strong><p>Xem log trực tiếp hoặc truy vấn lịch sử theo Worker.</p></div></div>
-        <p class="overview-foot">Đăng nhập bằng Cloudflare OAuth</p>
-      </aside>
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-kicker mono"><span><i class="signal" aria-hidden="true"></i> BUILT FOR YOUR WORKFLOW</span><span>WINDOWS / CLOUDFLARE</span></div>
+      <h1 id="hero-title"><span data-scramble>Cloudflare.</span><br><span class="hero-second" data-scramble>At your fingertips.</span></h1>
+      <div class="hero-bottom"><p>Your data, files, and logs. One desktop workspace.<br>VeDock brings everyday Cloudflare work closer — right to your Windows desktop.</p><a class="button dark" href="#trai-nghiem">See it in action <span aria-hidden="true">↓</span></a></div>
+      <div class="hero-meta mono"><span>IN DEVELOPMENT · NOT YET RELEASED</span><span aria-hidden="true">[ D1 / R2 / WORKERS ]</span></div>
+    </section>
+    <section id="trai-nghiem" class="demo-section wrap reveal" aria-labelledby="demo-title">
+      <div class="section-top mono"><h2 id="demo-title">01 / A WORKFLOW, IN MOTION</h2><span>ILLUSTRATIVE DEMO · SAMPLE DATA</span></div>
+      <figure class="demo" data-phase="d1-review" data-chapter="d1">
+        <div class="demo-viewport">
+          <div class="desktop-grid" aria-hidden="true"></div>
+          <div class="launch-screen" aria-hidden="true"><div class="launch-icon">V</div><span>VeDock</span><div class="launch-hint mono">YOUR WORKSPACE, READY.</div></div>
+          <div class="app-window" aria-hidden="true">
+            <div class="window-title"><span>VeDock <span class="dim">/ Workspace</span></span><span class="window-controls">— &nbsp; □ &nbsp; ×</span></div>
+            <div class="app-body">
+              <aside class="app-sidebar"><div class="account"><span class="account-avatar">S</span><div>Sandbox<span class="dim">Demo account</span></div></div><div class="sidebar-label mono">WORKSPACE</div><div class="side-home">⌂ <span>Home</span></div><div class="side-item side-d1"><span class="side-icon">▤</span> D1 databases <span class="side-caret">⌄</span></div><div class="side-child">demo-app</div><div class="side-item side-r2"><span class="side-icon">□</span> R2 buckets <span class="side-caret">⌄</span></div><div class="side-child">project-assets</div><div class="side-item side-logs"><span class="side-icon">≋</span> Workers logs</div><div class="side-child">demo-worker</div><div class="sidebar-bottom"><span>⚙</span> Settings </div></aside>
+              <div class="app-content">
+                <section class="scene scene-d1"><div class="app-tab">D1 / demo-app <span>×</span></div><div class="app-toolbar"><div><span class="dim">Tables /</span> products</div><span class="mini-button review-button">Review changes <b class="pending-number">1</b></span></div><div class="query-bar mono"><span>SELECT</span> * <span>FROM</span> products <span>LIMIT</span> 50;</div><table class="data-table"><thead><tr><th>id <span>↧</span></th><th>name</th><th>status</th><th>price</th></tr></thead><tbody><tr><td>01</td><td>Starter kit</td><td><span class="table-tag">active</span></td><td>120</td></tr><tr class="edit-row"><td>02</td><td>Field notebook</td><td class="edited-cell"><span class="old-value">draft</span><span class="new-value">active<span class="caret"></span></span></td><td>45</td></tr><tr><td>03</td><td>Desk planner</td><td><span class="table-tag">active</span></td><td>80</td></tr><tr><td>04</td><td>Travel journal</td><td>draft</td><td>65</td></tr><tr><td>05</td><td>Canvas pouch</td><td><span class="table-tag">active</span></td><td>35</td></tr></tbody></table><div class="table-footer mono"><span>5 ROWS · LOADED PAGE</span><span class="pending-label">1 pending change</span></div><div class="review-panel"><div class="review-top mono">REVIEW CHANGES <span>01</span></div><h3>Review before you write.</h3><p class="dim">products · id = 02</p><div class="diff-row"><span>status</span><del>draft</del><span class="change-arrow">→</span><ins>active</ins></div><div class="sql-preview mono">UPDATE products<br>SET status = 'active'<br>WHERE id = 02<br><span>AND status = 'draft';</span></div><div class="review-actions"><span>Cancel</span><span class="mini-button light commit-button">Commit 1 change ↗</span></div></div><div class="demo-toast"><span>✓</span> Change applied <small>Original values checked.</small></div></section>
+                <section class="scene scene-r2"><div class="app-tab">R2 / project-assets <span>×</span></div><div class="app-toolbar"><div><span class="dim">project-assets /</span> images</div><span class="mini-button">Upload files ↑</span></div><div class="r2-path mono">BUCKET / IMAGES /</div><div class="drop-zone"><span class="drop-symbol">↥</span><h3>Drop your files here.</h3><p class="dim">Review your files. Resolve name collisions.</p><span class="drag-file mono">▧ &nbsp; cover.webp</span></div><div class="upload-card"><div class="upload-heading"><span>Uploading files</span><span class="upload-percent mono">0%</span></div><div class="upload-track"><span></span></div><div class="upload-file"><span>▧</span><div>cover.webp<small>images/cover.webp</small></div><span class="file-status">Uploading</span></div><div class="upload-file"><span>▧</span><div>readme.txt<small>images/readme.txt</small></div><span class="green">✓</span></div><div class="upload-foot mono">JOBS / R2 UPLOAD<span>2 FILES</span></div></div><div class="demo-toast"><span>✓</span> Upload complete <small>Saved in your job history.</small></div></section>
+                <section class="scene scene-logs"><div class="app-tab">Workers / demo-worker <span>×</span></div><div class="app-toolbar"><div>Live logs <span class="live-indicator"><i></i> Live</span></div><span class="mini-button">Pause display Ⅱ</span></div><div class="log-filters mono"><span>METHOD: GET ⌄</span><span>OUTCOME: ANY ⌄</span><span>APPLY ↵</span></div><div class="log-column mono"><span>TIME</span><span>EVENT</span><span>STATUS</span></div><div class="log-lines mono"><div><time>10:24:01</time><span>GET /api/products</span><b>200</b></div><div><time>10:24:02</time><span>info <em>Request received</em></span><b>ok</b></div><div><time>10:24:03</time><span>GET /api/products/02</span><b>200</b></div><div><time>10:24:03</time><span>info <em>Cache hit</em></span><b>ok</b></div><div><time>10:24:04</time><span>GET /health</span><b>200</b></div><div><time>10:24:05</time><span>info <em>Response sent</em></span><b>ok</b></div><div><time>10:24:06</time><span>GET /api/products</span><b>200</b></div></div><div class="log-waiting mono">CONNECTING TO LIVE TAIL<span>_</span></div><div class="table-footer mono"><span>REAL-TIME STREAM</span><span>DEMO DATA</span></div></section>
+              </div>
+            </div>
+            <div class="window-status mono"><span><i class="signal"></i> SANDBOX / OAUTH</span><span>SAMPLE DATA</span></div>
+          </div>
+          <div class="demo-cursor" aria-hidden="true"><svg viewBox="0 0 24 30" fill="none"><path d="M2 2L21 18L12 19L8 27L2 2Z" fill="#eee" stroke="#101010" stroke-width="1.5"/></svg><span></span></div>
+          <div class="stage-label mono" aria-hidden="true">VEDOCK / WINDOWS WORKSPACE</div>
+        </div>
+        <figcaption><span class="demo-caption">D1 / Review your changes before committing.</span><span class="demo-time mono" aria-hidden="true">00:14 / 00:46</span></figcaption>
+        <div class="demo-controls" hidden><div class="playback"><button type="button" data-play aria-label="Pause demo">Ⅱ</button><button type="button" data-replay aria-label="Replay demo from the beginning">↺</button></div><div class="chapters" aria-label="Choose a demo chapter"><button type="button" data-seek="launch">01 <span>Launch</span></button><button type="button" data-seek="d1">02 <span>D1</span></button><button type="button" data-seek="r2">03 <span>R2</span></button><button type="button" data-seek="logs">04 <span>Logs</span></button></div><div class="timeline-track" aria-hidden="true"><span></span></div></div>
+      </figure>
+      <p class="demo-disclosure mono">An illustrative walkthrough using sample data.</p>
     </section>
     <section class="features wrap" id="tinh-nang" aria-labelledby="features-title">
-      <div class="section-heading"><p class="eyebrow">Những việc hằng ngày</p><h2 id="features-title">Từ xem dữ liệu<br> đến xử lý công việc.</h2><p>Các tính năng đang được hoàn thiện trong VeDock.</p></div>
+      <div class="section-top mono reveal"><span>02 / THE EVERYDAY ESSENTIALS</span><span>LESS FRICTION. MORE CONTEXT.</span></div>
+      <div class="section-heading reveal"><h2 id="features-title" data-scramble>Stay in<br>your flow.</h2><p>A familiar place for the work you do every day. From a single database row to the last file in your bucket.</p></div>
       <div class="feature-grid">
-        <article><p class="feature-label">Cơ sở dữ liệu / D1</p><h3>Sửa dữ liệu<br> có bước xem lại.</h3><p>Duyệt bảng và view, tìm trong trang đã tải, chạy câu lệnh SQL và xuất CSV. Các chỉnh sửa trên bảng được tập hợp để xem lại trước khi ghi.</p><ul><li>Đối chiếu giá trị cũ để nhận biết xung đột</li><li>Dừng khi kết quả ghi chưa xác định</li><li>Lịch sử truy vấn lưu tại máy</li></ul></article>
-        <article><p class="feature-label">Lưu trữ object / R2</p><h3>Làm việc với tệp,<br> biết rõ tác vụ.</h3><p>Duyệt theo thư mục, xem metadata, tải xuống và tải lên tệp. Khi trùng tên, bạn chọn cách xử lý trước khi ghi đè.</p><ul><li>Tiến độ và trạng thái tác vụ trong Jobs</li><li>Kiểm tra lock và Data Catalog trước khi xóa</li><li>Xác nhận phạm vi và số object cần xóa</li></ul></article>
-        <article><p class="feature-label">Quan sát / Workers logs</p><h3>Tìm sự kiện.<br> Theo dõi ngữ cảnh.</h3><p>Mở Live logs cho một Worker, áp dụng bộ lọc hoặc tạm dừng hiển thị. Với History, chọn khoảng thời gian và tìm các sự kiện liên quan.</p><ul><li>Lọc theo phương thức, kết quả và nội dung</li><li>Mở rộng console log và exception</li><li>Mang giá trị đã chọn sang tìm kiếm trong D1</li></ul></article>
+        <article class="feature reveal"><div class="feature-art art-d1" aria-hidden="true"><div class="floating-table"><div class="mini-table-label mono">PRODUCTS / CHANGES</div><div><span>id</span><span>status</span></div><div><span>02</span><span><del>draft</del> <b>active</b></span></div><div class="table-confirm mono">✓ REVIEW BEFORE COMMIT</div></div></div><div class="feature-copy"><span class="mono feature-id">01 / D1 DATABASES</span><h3>Clear data.<br>Deliberate changes.</h3><p>Browse tables, run SQL, and review edits before committing. Check original values to catch conflicts.</p><a href="#trai-nghiem" data-jump="d1">Explore the D1 workflow <span aria-hidden="true">↗</span></a></div></article>
+        <article class="feature reveal"><div class="feature-art art-r2" aria-hidden="true"><div class="folder-shape"></div><div class="floating-file mono"><span>▧</span> cover.webp <i>✓</i></div><div class="folder-caption mono">PROJECT-ASSETS / IMAGES</div></div><div class="feature-copy"><span class="mono feature-id">02 / R2 STORAGE</span><h3>From your desktop.<br>To the right bucket.</h3><p>Browse, upload, and download. Resolve collisions before overwriting. Check lock rules and Data Catalog before deleting.</p><a href="#trai-nghiem" data-jump="r2">Explore the R2 workflow <span aria-hidden="true">↗</span></a></div></article>
+        <article class="feature reveal"><div class="feature-art art-logs" aria-hidden="true"><div class="mini-terminal mono"><div><i class="signal"></i> LIVE / DEMO-WORKER</div><p><span>200</span> GET /api/products</p><p><span>info</span> Request received</p><p><span>200</span> GET /health</p><p class="terminal-caret">_</p></div></div><div class="feature-copy"><span class="mono feature-id">03 / WORKERS LOGS</span><h3>Every event.<br>In context.</h3><p>Follow live logs or query a Worker’s history. Carry a selected value into D1 to keep investigating.</p><a href="#trai-nghiem" data-jump="logs">Follow the event stream <span aria-hidden="true">↗</span></a></div></article>
       </div>
     </section>
-    <section class="principles" id="cach-lam-viec" aria-labelledby="principles-title">
-      <div class="wrap principles-inner">
-        <div><p class="eyebrow">Cách VeDock làm việc</p><h2 id="principles-title">Bạn giữ quyền<br> kiểm soát.</h2></div>
-        <div class="principle-list">
-          <article><h3>Đăng nhập qua Cloudflare</h3><p>Ứng dụng sử dụng OAuth. Bạn chọn các mô-đun và mức quyền cần dùng, thay vì dán API token vào VeDock.</p></article>
-          <article><h3>Rõ tài khoản, rõ thao tác</h3><p>Không gian làm việc gắn với từng tài khoản. Các thao tác thay đổi dữ liệu có bước xem lại hoặc xác nhận phù hợp; kết quả không xác định cần được đối chiếu trước khi thử lại.</p></article>
-          <article><h3>Dữ liệu ứng dụng lưu tại máy</h3><p>Thông tin đăng nhập, bộ nhớ đệm và nhật ký tác vụ được lưu cục bộ. VeDock kết nối trực tiếp tới API Cloudflare, không qua máy chủ trung gian của VeDock.</p></article>
-        </div>
-      </div>
+    <section class="principles wrap" id="cach-lam-viec" aria-labelledby="principles-title">
+      <div class="section-top mono reveal"><span>03 / DESIGNED TO KEEP YOU IN CONTROL</span><span>LOCAL FIRST.</span></div>
+      <div class="principles-layout"><h2 class="reveal" id="principles-title" data-scramble>Your machine.<br>Your permissions.</h2><div class="principle-list"><article class="reveal"><span class="mono">[01]</span><div><h3>Sign in with OAuth.</h3><p>Choose the modules and access levels you need. No API tokens to paste into VeDock.</p></div></article><article class="reveal"><span class="mono">[02]</span><div><h3>Know the account. Know the action.</h3><p>Each workspace stays tied to its account. Review changes before they happen, and reconcile uncertain outcomes before trying again.</p></div></article><article class="reveal"><span class="mono">[03]</span><div><h3>Stored locally. Connected directly.</h3><p>Credentials, cache, and job history stay on your machine. VeDock connects directly to Cloudflare’s APIs, without a VeDock server in between.</p></div></article></div></div>
     </section>
-    <section class="status wrap" id="trang-thai" aria-labelledby="status-title">
-      <p class="eyebrow">Trạng thái dự án</p>
-      <h2 id="status-title">Đang hoàn thiện,<br> chưa phát hành.</h2>
-      <p>VeDock đang được kiểm thử và hoàn thiện trải nghiệm sử dụng. Trang này giới thiệu sản phẩm đang phát triển; hiện chưa có bản tải xuống công khai.</p>
-      <a class="text-link" href="#dau-trang">Về đầu trang <span aria-hidden="true">↑</span></a>
-    </section>
+    <section class="contact" id="lien-he" aria-labelledby="contact-title"><div class="wrap"><div class="section-top mono"><span><i class="signal"></i> WORK IN PROGRESS</span><span>WINDOWS DESKTOP</span></div><h2 id="contact-title" data-scramble>Let’s build a<br>better workspace.</h2><div class="contact-bottom"><p>VeDock is in development and not yet released.<br>There is no public download yet. Have an idea<br>or something you’d like to discuss? We’d love to hear it.</p><a href="mailto:support@vedock.com">support@vedock.com <span aria-hidden="true">↗</span></a></div></div></section>
   </main>
-  <footer class="site-footer wrap">
-    <p class="footer-name">VeDock</p>
-    <p>VeDock là ứng dụng độc lập của bên thứ ba, không liên kết, được bảo trợ hay chứng thực bởi Cloudflare, Inc. Cloudflare® là nhãn hiệu đã đăng ký của Cloudflare, Inc. Bạn cần tài khoản Cloudflare của riêng mình để sử dụng VeDock.</p>
-  </footer>
+  <footer class="footer wrap"><a href="#dau-trang" class="wordmark">VeDock</a><p>VeDock is an independent application, not affiliated with, endorsed by, or sponsored by Cloudflare, Inc. Cloudflare® is a registered trademark of Cloudflare, Inc. A Cloudflare account is required.</p><a href="#dau-trang" class="mono">BACK TO TOP ↑</a></footer>
 </body>
 </html>
