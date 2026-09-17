@@ -1,9 +1,8 @@
-import { DemoTimeline, DURATION, scrambleText } from './motion.mjs';
+import { DemoTimeline, RevealCycle, scrambleText } from './motion.mjs';
 
 const preference = matchMedia('(prefers-reduced-motion: reduce)');
 const demo = document.querySelector('.demo');
 const timeline = new DemoTimeline({ reducedMotion: preference.matches });
-const play = document.querySelector('[data-play]');
 const cursor = document.querySelector('.demo-cursor');
 const caption = document.querySelector('.demo-caption');
 const captions = {
@@ -33,7 +32,6 @@ function render() {
     caption.textContent = captions[frame.phase];
     previousPhase = frame.phase;
   }
-  demo.style.setProperty('--progress', `${frame.progress * 100}%`);
   demo.style.setProperty('--upload', `${frame.upload * 100}%`);
   cursor.style.left = `${frame.cursor.x}%`;
   cursor.style.top = `${frame.cursor.y}%`;
@@ -44,11 +42,6 @@ function render() {
     row.style.opacity = frame.logCount > i ? '1' : '0';
     row.style.transform = frame.logCount > i ? 'none' : 'translateY(7px)';
   });
-  document.querySelector('.demo-time').textContent = `00:${String(Math.floor(frame.elapsed / 1000)).padStart(2, '0')} / 00:${DURATION / 1000}`;
-  document.querySelectorAll('[data-seek]').forEach(button => button.setAttribute('aria-current', String(button.dataset.seek === frame.chapter)));
-  play.textContent = timeline.userPaused ? '▷' : 'Ⅱ';
-  play.setAttribute('aria-label', timeline.userPaused ? 'Resume demo' : 'Pause demo');
-  play.setAttribute('aria-pressed', String(timeline.userPaused));
 }
 function loop(now) {
   animation = null;
@@ -65,22 +58,25 @@ function sync() {
   render();
   if (timeline.playing) animation = requestAnimationFrame(loop);
 }
-play.addEventListener('click', () => { timeline.userPaused ? timeline.play() : timeline.pause(); sync(); });
-document.querySelector('[data-replay]').addEventListener('click', () => { timeline.replay(); sync(); });
-document.querySelectorAll('[data-seek]').forEach(button => button.addEventListener('click', () => { timeline.seek(button.dataset.seek); sync(); }));
-document.querySelectorAll('[data-jump]').forEach(link => link.addEventListener('click', () => { timeline.seek(link.dataset.jump); sync(); }));
 document.addEventListener('visibilitychange', sync);
 new IntersectionObserver(entries => { visible = entries[0].isIntersecting; sync(); }, { threshold: .15 }).observe(demo);
 preference.addEventListener('change', () => {
-  timeline.reducedMotion = preference.matches;
-  if (preference.matches) { timeline.pause(); timeline.seek('d1'); }
-  play.hidden = preference.matches;
+  timeline.setReducedMotion(preference.matches);
   sync();
 });
 
-function resolveHeading(element) {
-  if (preference.matches || element.dataset.resolved) return;
-  element.dataset.resolved = 'true';
+const headingRuns = new Map();
+function resetHeading(element) {
+  const run = headingRuns.get(element);
+  if (!run) return;
+  headingRuns.delete(element);
+  if (run.raf !== null) cancelAnimationFrame(run.raf);
+  element.replaceChildren(...run.source.childNodes);
+  element.classList.remove('scrambling');
+}
+function resolveHeading(element, cycle, revision) {
+  resetHeading(element);
+  if (preference.matches) return;
   const original = element.innerText;
   const source = document.createElement('span');
   source.className = 'scramble-source';
@@ -90,27 +86,69 @@ function resolveHeading(element) {
   visual.setAttribute('aria-hidden', 'true');
   element.append(source, visual);
   element.classList.add('scrambling');
+  const run = { source, raf: null };
+  headingRuns.set(element, run);
   const start = performance.now();
   function update(now) {
+    if (headingRuns.get(element) !== run) return;
+    run.raf = null;
+    if (!cycle.isCurrent(revision) || preference.matches || document.hidden) { resetHeading(element); return; }
     const progress = Math.min((now - start) / 1050, 1);
     visual.textContent = scrambleText(original, progress);
-    if (progress < 1 && !preference.matches && !document.hidden) requestAnimationFrame(update);
-    else { element.replaceChildren(...source.childNodes); element.classList.remove('scrambling'); }
+    if (progress < 1) run.raf = requestAnimationFrame(update);
+    else resetHeading(element);
   }
-  requestAnimationFrame(update);
+  run.raf = requestAnimationFrame(update);
 }
+const revealCycles = new WeakMap();
 const reveal = new IntersectionObserver(entries => {
-  entries.filter(entry => entry.isIntersecting).forEach(({ target }) => {
-    target.classList.add('is-visible');
-    if (target.matches('[data-scramble]')) resolveHeading(target);
-    target.querySelectorAll('[data-scramble]').forEach(resolveHeading);
-    reveal.unobserve(target);
-  });
-}, { threshold: .12 });
-document.querySelectorAll('.reveal, [data-scramble]').forEach(element => reveal.observe(element));
+  for (const { target, intersectionRatio } of entries) {
+    const cycle = revealCycles.get(target);
+    const state = cycle.update(intersectionRatio);
+    target.classList.toggle('is-visible', state.visible);
+    if (state.exit) resetHeading(target);
+    if (state.enter && target.matches('[data-scramble]')) resolveHeading(target, cycle, state.revision);
+  }
+}, { threshold: [0, .12] });
+document.querySelectorAll('.reveal, [data-scramble]').forEach(element => {
+  revealCycles.set(element, new RevealCycle());
+  reveal.observe(element);
+});
+preference.addEventListener('change', () => { if (preference.matches) [...headingRuns.keys()].forEach(resetHeading); });
 if (!preference.matches) document.documentElement.classList.add('js-motion');
 if (preference.matches) timeline.seek('d1');
-play.hidden = preference.matches;
 demo.classList.add('enhanced');
-document.querySelector('.demo-controls').hidden = false;
 sync();
+
+// Decorative diagrams suspend offscreen, just like the cinematic walkthrough.
+const scenes = new IntersectionObserver(entries => {
+  for (const { target, isIntersecting } of entries) target.classList.toggle('motion-active', isIntersecting);
+}, { threshold: .15 });
+document.querySelectorAll('.motion-scene').forEach(scene => scenes.observe(scene));
+function suspendDecorations() { document.documentElement.classList.toggle('document-hidden', document.hidden); }
+document.addEventListener('visibilitychange', suspendDecorations);
+suspendDecorations();
+preference.addEventListener('change', () => document.documentElement.classList.toggle('js-motion', !preference.matches));
+if (matchMedia('(pointer: fine)').matches) {
+  document.querySelectorAll('[data-depth]').forEach(scene => {
+    let pending = null;
+    scene.addEventListener('pointermove', event => {
+      if (preference.matches || !scene.classList.contains('motion-active')) return;
+      const rect = scene.getBoundingClientRect();
+      const x = (event.clientY - rect.top) / rect.height - .5;
+      const y = (event.clientX - rect.left) / rect.width - .5;
+      if (pending !== null) cancelAnimationFrame(pending);
+      pending = requestAnimationFrame(() => {
+        scene.style.setProperty('--depth-x', `${-x * 4}deg`);
+        scene.style.setProperty('--depth-y', `${y * 5}deg`);
+        pending = null;
+      });
+    });
+    scene.addEventListener('pointerleave', () => {
+      if (pending !== null) cancelAnimationFrame(pending);
+      pending = null;
+      scene.style.setProperty('--depth-x', '0deg');
+      scene.style.setProperty('--depth-y', '0deg');
+    });
+  });
+}
