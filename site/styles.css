@@ -12,3 +12,5 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.js-motion .reveal{opacity:1!important;transform:none!important}.demo .demo-cursor{display:none!important}.app-window{transform:none!important}.scramble-source{opacity:1}.scramble-visual{display:none}}
 @media(forced-colors:active){.button,.demo,.mini-button,.feature-art{border:1px solid CanvasText}.signal{background:CanvasText}.scramble-source{opacity:1}.scramble-visual{display:none}}
 .hero h1>span{display:inline-block}
+/* Keep the full-bleed footer outside the responsive content-width constraint. */
+.footer{width:100%}
