@@ -1,0 +1,4 @@
+# Cloudflare Pages handles .html to extensionless paths.
+# Configure www to apex at the zone: domain-level sources are not supported here.
+/privacy-policy /privacy 301
+/terms-of-service /terms 301

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy policy — VeDock</title>
+  <meta name="description" content="How VeDock handles local data, Cloudflare OAuth, website hosting, and support.">
+  <meta name="theme-color" content="#f5f5f5">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="canonical" href="https://vedock.com/privacy">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="VeDock">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Privacy policy — VeDock">
+  <meta property="og:description" content="How VeDock handles local data, Cloudflare OAuth, website hosting, and support.">
+  <meta property="og:url" content="https://vedock.com/privacy">
+  <meta property="og:image" content="https://vedock.com/social-preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="VeDock. Cloudflare at your fingertips. D1, R2 and Workers logs in one Windows workspace. In development.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Privacy policy — VeDock">
+  <meta name="twitter:description" content="How VeDock handles local data, Cloudflare OAuth, website hosting, and support.">
+  <meta name="twitter:image" content="https://vedock.com/social-preview.png">
+  <meta name="twitter:image:alt" content="VeDock — a Windows workspace for D1, R2 and Workers logs. In development.">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="legal-page">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="header wrap"><a href="/" class="wordmark">VeDock<span class="wordmark-dot" aria-hidden="true">_</span></a><a href="/" class="nav-contact">Back to VeDock <span aria-hidden="true">↗</span></a></header>
+  <main class="legal-content wrap" id="main-content">
+    <p class="mono legal-kicker">LAST UPDATED · SEPTEMBER 17, 2026</p>
+    <h1>Privacy policy</h1>
+    <p class="legal-intro">Your Cloudflare workspace stays on your device. This page explains the current VeDock desktop application, this website, and what happens when you contact us.</p>
+    <section><h2>Scope and current status</h2><p>VeDock is an independent Windows application for Cloudflare D1, R2, and Workers logs. It is in development and has not been publicly released. This policy describes the current implementation and website; it will be updated when their data practices change.</p></section>
+    <section><h2>Signing in and connecting to Cloudflare</h2><p>You sign in on Cloudflare’s website through OAuth. VeDock does not ask for or receive your Cloudflare password. Cloudflare provides the authorization, account information, and permissions needed for the modules you choose.</p><p>The desktop application sends requests directly to Cloudflare. There is no VeDock application backend, account sync service, or cloud copy of your workspace. Cloudflare processes these requests under its own <a href="https://www.cloudflare.com/privacypolicy/">privacy policy</a> and service terms.</p></section>
+    <section><h2>Information on your device</h2><p>OAuth credentials are protected using Windows credential protection and are held in memory while needed. Local account information, operational cache, SQL query history, and job records support the workspace and recovery of interrupted work. Sensitive fields in the local store are encrypted with a key protected by Windows.</p><p>Job records can include resource names, object keys, and original and edited values needed to reconcile a change. Viewed Worker log events remain in memory; VeDock does not create a local archive of those events. Downloads and exports are saved to locations you choose and are not covered by the app’s local-store encryption.</p></section>
+    <section><h2>Diagnostics and telemetry</h2><p>VeDock has no application analytics or telemetry and does not automatically upload crash reports. Local diagnostics are designed to exclude credentials, Worker log content, database cell values, and request bodies. If you choose to share diagnostics for support, review them first and remove anything you do not want to send.</p></section>
+    <section><h2>Your choices and data removal</h2><p>You choose which modules to authorize and can revoke VeDock’s access through Cloudflare’s Connected Applications. Signing out removes the local credential; if remote revocation cannot complete, revoke access in Cloudflare too.</p><p>The app’s Clear local data action removes local cache, query history, manifests, and job records while preserving authorizations. Windows, backups, downloads, and exports may retain data after the app is uninstalled. Removing local records is not a guarantee of secure erasure, and it does not delete your resources on Cloudflare.</p></section>
+    <section><h2>This website</h2><p>vedock.com is a static website hosted on Cloudflare Pages. We do not add analytics scripts, advertising trackers, forms, or tracking cookies. Fonts and visual assets are served from this site.</p><p>Delivering and protecting the website requires Cloudflare to process normal connection information, such as IP addresses and request metadata. Cloudflare’s hosting and security processing is separate from the desktop application’s no-telemetry behavior.</p></section>
+    <section><h2>When you contact us</h2><p>If you email <a href="mailto:support@vedock.com">support@vedock.com</a>, your email address, message, and any attachments are used to respond and resolve the issue. Email is handled by the providers involved in delivering it. Please do not send passwords, access tokens, or sensitive production data.</p><p>You can use the same address to ask about, correct, or request deletion of information you have sent for support. We cannot access or remove data stored only on your device or in your Cloudflare account.</p></section>
+    <section><h2>Changes and contact</h2><p>Updates will appear on this page with a new date. For privacy questions, contact <a href="mailto:support@vedock.com">support@vedock.com</a>.</p></section>
+  </main>
+  <footer class="footer wrap"><a href="/" class="wordmark">VeDock</a><p>VeDock is an independent application, not affiliated with, endorsed by, or sponsored by Cloudflare, Inc. Cloudflare® is a registered trademark of Cloudflare, Inc. A Cloudflare account is required.</p><nav class="legal-links" aria-label="Legal"><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/licenses">Licenses</a><a href="mailto:support@vedock.com">Contact</a></nav></footer>
+</body>
+</html>
